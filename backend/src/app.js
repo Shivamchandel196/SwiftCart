@@ -3,8 +3,9 @@ import cors from "cors";
 import morgan from "morgan";
 import authRoutes from './routes/auth.routes.js';
 import productsRoutes from "./routes/products.Routes.js";
-
-
+import router from './routes/order.routes.js'
+import paymentrouter from './routes/payment.routes.js';
+import analyticsrouter from './routes/analytics.routes.js';
 
 const app = express();
 app.use(cors());
@@ -18,9 +19,9 @@ app.get('/',(req,res)=>{
 
 app.use('/api/auth',authRoutes);
 app.use('/api/products',productsRoutes);
-// app.use('/api/orders',)
-// app.use('/api/payments',)
-// app.use('/api/analytics',)
+app.use('/api/orders',router)
+app.use('/api/payments',paymentrouter)
+app.use('/api/analytics',analyticsrouter)
 
 
 
